@@ -1,0 +1,65 @@
+
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
+
+
+<!-- Content for the Update page-->
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6"><br>
+            <h1><%= title %></h1>
+
+            <form  class="form" method="POST"><br>
+                <div class="form-group">
+                    <label for="nameTextField">Name</label>
+                    <input type="text" class="form-control"
+                    id="nameTextField"
+                    placeholder="Enter Name"
+                    name= "name" 
+                    value="<%= contact.name %>"
+                    required>
+                </div>
+
+                <div class="form-group">
+                    <label for="authorTextField">Contact Number</label>
+                    <input type="text" class="form-control"
+                    id="authorTextField"
+                    placeholder="Enter Contact"
+                    name= "number" 
+                    value="<%= contact.number %>"
+                    required>
+                </div>
+
+                <div class="form-group">
+                    <label for="publishedTextField">Email Address</label>
+                    <input type="text" class="form-control"
+                    id="publishedTextField"
+                    placeholder="Enter Email"
+                    name= "email"
+                    value="<%= contact.email %>"
+                    required>
+                </div>
+
+               
+               
+
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i>Submit</button>
+
+                    <a href="/business_contacts-list" class="btn btn-warning">
+                        <i class="fas fa-undo"></i>Cancel</a>
+                
+
+            </form>
+        </div>
+        
+    </div>
+</div>  
+
+
+
+<%- include ../partials/bottom_nav.ejs %>
+
+<%- include ../partials/footer.ejs %>
+ 

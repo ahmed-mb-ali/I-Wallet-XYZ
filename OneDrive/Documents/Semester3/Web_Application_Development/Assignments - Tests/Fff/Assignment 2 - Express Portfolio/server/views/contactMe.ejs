@@ -1,0 +1,62 @@
+<!--Header-->
+<%- include partials/header.ejs %>
+
+    <!--Main Navigation-->
+    <%- include partials/main_nav.ejs %>
+
+        <!--Welcome Message -->
+        <%- include partials/welcome_message.ejs %>
+
+
+            <!--Contact Form -->
+            <form>
+                <div class="row">
+                    <div class="col">
+                        <input type="text" id="firstName" class="form-control" placeholder="First Name">
+                        <!--Here user can input first name-->
+                    </div>
+                    <div class="col" class="from-group">
+                        <input type="text" id="lastName" class="form-control" placeholder="Last Name">
+                        <!--Here user can input last name-->
+                    </div>
+                </div><br>
+
+                <div class="form-group">
+                    <input type="contact_number" id="contactNumber" class="form-control" placeholder="Contact Number">
+                    <!--Here user can input contact number-->
+                </div>
+
+                <div class="form-group">
+                    <input type="email" id="emailAddress" class="form-control" placeholder="Email Address">
+                    <!--Here user can input email address-->
+                </div>
+
+                <div class="form-group">
+                    <textarea name="message" id="message" class="form-control" placeholder="Type your message here" cols="30" rows="8"></textarea>
+                    <!--Here user can input Text Area-->
+                </div>
+
+                <button class="btn btn-primary" id="sendButton" type="submit">
+        <i class="fas fa-edit">Submit</i></button>
+                <!--Submit Button-->
+
+
+                <a href="/contact" class="btn btn-warning" class="btn btn-primary" id="cancelButton" type="reset">
+                    <i class="fas fa-undo"></i>Cancel</a>
+                <!--Cancel Button-->
+
+
+            </form><br>
+
+            <!--My Contact Information-->
+            <div class="panel panel-default">
+                <pre>Name: Florance Floreanu Email:<a href="mailto:floreanuflorance@yahoo.com">floreanuflorance@yahoo.com</a>  Phone:647-876-0098 Address: Toronto,Ontario,Canada 
+          </pre>
+            </div>
+
+
+            <!--Bottom-->
+            <%- include partials/bottom_nav.ejs %>
+
+                <!--Footer-->
+                <%- include partials/footer.ejs %>

@@ -1,0 +1,10 @@
+/* custom css goes here */
+
+.image-group { text-align: center; }
+ .image-group { display:inline-table; }
+ .image-group { display:inline; }
+
+ 
+ .col1 { transition: transform .2s;  margin: 0 auto;}
+
+ 

@@ -1,0 +1,32 @@
+<!--Header-->
+<%- include partials/header.ejs %>
+
+    <!--Main Navigation-->
+    <%- include partials/main_nav.ejs %>
+
+        <!--Welcome Message with Jumbotron bar-->
+        <%- include partials/welcome_message_jumbotron.ejs %>
+
+
+            <!-- Mission Statemnnt-->
+
+            <div class="form-group">
+                <p>
+                    <b>Mission Statement </b><br> Our mission is to solve real life and business problems.
+                </p>
+            </div>
+
+
+            <!--Button to about me page-->
+            <form method="get" action="/about">
+                <button type="submit" class="btn btn-primary">About Me</button>
+            </form>
+
+
+
+
+            <!--Bottom-->
+            <%- include partials/bottom_nav.ejs %>
+
+                <!--Footer-->
+                <%- include partials/footer.ejs %>
