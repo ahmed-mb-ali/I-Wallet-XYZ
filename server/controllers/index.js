@@ -34,11 +34,11 @@ module.exports.displayLoginPage = (req, res, next) => {
     // check if the user is already logged in
     if(!req.user)
     {
-        res.render('auth/login', 
+        res.render('auth/login',
         {
            title: "Login",
            messages: req.flash('loginMessage'),
-           displayName: req.user ? req.user.displayName : '' 
+           displayName: req.user ? req.user.displayName : ''
         })
     }
     else
@@ -67,7 +67,7 @@ module.exports.processLoginPage = (req, res, next) => {
             {
                 return next(err);
             }
-           
+
 
 
             /* TODO - Getting Ready to convert to API
@@ -80,7 +80,7 @@ module.exports.processLoginPage = (req, res, next) => {
             */
 
             return res.redirect('/home');
-            
+
         });
     })(req, res, next);
 }
@@ -110,6 +110,7 @@ module.exports.processRegisterPage = (req, res, next) => {
         email: req.body.email,
         displayName: req.body.displayName
     });
+    console.log(newUser)
 
     User.register(newUser, req.body.password, (err) => {
         if(err)
@@ -151,3 +152,5 @@ module.exports.performLogout = (req, res, next) => {
     req.logout();
     res.redirect('/');
 }
+
+
