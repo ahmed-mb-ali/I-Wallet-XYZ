@@ -2,17 +2,26 @@ let express = require('express');
 let router = express.Router();
 
 let indexController = require('../controllers/index');
+let authController = require('../controllers/authController');
 
 // helper function for guard purposes
-function requireAuth(req, res, next)
-{
+function requireAuth(req, res, next) {
     // check if the user is logged in
-    if(!req.isAuthenticated())
-    {
+    if (!req.isAuthenticated()) {
         return res.redirect('/login');
+    }
+    if (req.user.OTPType) {
+        if (!req.user.OTPResult) {
+            if (req.user.OTPType == "email")
+                return res.redirect('/emailOTP');
+            else
+                return res.redirect('/emailOTP'); ///should change to sms otp
+        }
+
     }
     next();
 }
+
 
 
 /* GET home page. */
@@ -25,7 +34,7 @@ router.get('/home', requireAuth, indexController.displayHomePage);
 router.get('/document', requireAuth, indexController.displayDocumentPage);
 
 /* GET Notification page. */
-router.get('/notification',indexController.displayNotificationPage);
+router.get('/notification', indexController.displayNotificationPage);
 
 /* GET User Profile page. */
 router.get('/userProfile', indexController.displayUserProfilePage);
@@ -34,18 +43,24 @@ router.get('/userProfile', indexController.displayUserProfilePage);
 router.get('/customerCare', indexController.displayCustomerCarePage);
 
 /* GET Route for displaying the Login page */
-router.get('/login', indexController.displayLoginPage);
+router.get('/login', authController.displayLoginPage);
 
 /* POST Route for processing the Login page */
-router.post('/login', indexController.processLoginPage);
+router.post('/login', authController.processLoginPage);
 
 /* GET Route for displaying the Register page */
-router.get('/register', indexController.displayRegisterPage);
+router.get('/register', authController.displayRegisterPage);
 
 /* POST Route for processing the Register page */
-router.post('/register', indexController.processRegisterPage);
+router.post('/register', authController.processRegisterPage);
+
+/* GET Route for sending email otp */
+router.get('/emailOTP', authController.displayEmailOTPPage);
+
+/* POST Route for sending email otp */
+router.post('/emailOTP', authController.processEmailOTP);
 
 /* GET to perform UserLogout */
-router.get('/logout', indexController.performLogout);
+router.get('/logout', authController.performLogout);
 
 module.exports = router;
