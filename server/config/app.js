@@ -17,6 +17,8 @@ let flash = require('connect-flash');
 let mongoose = require('mongoose');
 let DB = require('./db');
 
+const PORT=5000
+
 //point mongoose to the DB URI
 mongoose.connect(DB.URI, {useNewUrlParser: true, useUnifiedTopology: true});
 
@@ -89,5 +91,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', { title: 'Error'});
 });
+
+app.listen(PORT, ()=> console.log(`Server is running at port ${PORT}`) )
 
 module.exports = app;
