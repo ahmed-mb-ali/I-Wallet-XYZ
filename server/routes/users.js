@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 
-/* PATCH reset password by user email */
-router.patch('/:email', user_controller.resetPassword)
+/*POST: reset password by id*/
+router.post('/recoverPassword', user_controller.renderRecoverPassword)
 
 module.exports = router;

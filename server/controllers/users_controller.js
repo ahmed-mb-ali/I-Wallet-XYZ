@@ -3,13 +3,15 @@ let User = userModel.User
 const CODE=require('./code_meaning')
 
 
-module.exports.resetPassword = (req,res,next)=>{
-    const email=req.body.email
-    User.findOneAndUpdate({email}, {$set:{
-            password: CODE.ORIGINAL_PASSWORD
-        }}, {}, (err, user)=>{
-        if(err) console.log(CODE.SERVER_ERROR)
-        else if(!user) console.log(CODE.NO_USER)
-        else res.send(CODE.MODIFY_DONE)
+module.exports.renderRecoverPassword = async (req,res,next)=>{
+    const password=req.body.password
+    const id=req.body.id
+    const user = await User.findById({_id: id}, (err, user) => {if (err) return})
+
+    user.salt=password
+    user.save((err, result) => {
+        if(err) return
+        res.send('Changed successfully!')
     })
 }
+

@@ -5,7 +5,6 @@ let passport = require('passport');
 const nodemailer = require('nodemailer');
 
 
-
 // create the User Model instance
 let userModel = require('../models/user');
 let User = userModel.User; // alias
@@ -39,6 +38,7 @@ const SendEmailOTP = async (emailAddress, OTP) => {
         to: emailAddress,
         subject: "OTP",
         html: `<h1>Hello . OTP Code is ${OTP}</h1>`
+        // html: `<p>Hello. ${OTP}</p>`
     }
 
     let result = await transporter.sendMail(message);
@@ -234,4 +234,52 @@ module.exports.processRegisterPage = (req, res, next) => {
 module.exports.performLogout = (req, res, next) => {
     req.logout();
     res.redirect('/');
+}
+
+
+/* Render the forget password page */
+module.exports.forgetPassword = (req,res,next) => {
+    res.render('auth/forget_password')
+}
+
+/* recover password */
+module.exports.recoverPassword = async (req,res,next)=>{
+    const email = req.body.email
+    const user = await User.findOne({email}, (err, user) => {
+        if(err) return
+    })
+    const userId = user.id
+    const url = `localhost:3000/recoverPassword/${userId}`
+    SendEmailToRecoverPassword(email, url)
+}
+
+const SendEmailToRecoverPassword = async (emailAddress, url) => {
+    ///LOGIC to send otp code to email
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
+        requireTLS: true,
+        auth: {
+            user: 'Njobedari@gmail.com',
+            pass: 'Newemail2022'
+        }
+    });
+
+    let message = {
+        from: "Njobedari@gmail.com",
+        to: emailAddress,
+        subject: "Recover your password",
+        // html: `<h1>Hello . OTP Code is ${OTP}</h1>
+        // html: `<p>Hello, please click the link below to recover your password: <p><a href="${url}">${url}</a></p></p>`,
+        html: "<p>Hello, please click the link below to recover your password: <p><a href="+url+">"+url+"</a></p></p>"
+    }
+
+    let result = await transporter.sendMail(message);
+    return result;
+};
+
+module.exports.renderRecoverPasswordPage=(req,res,next)=>{
+    const id=req.params.id
+    res.render('auth/recoverPassword', {id})
 }

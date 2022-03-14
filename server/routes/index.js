@@ -63,4 +63,15 @@ router.post('/emailOTP', authController.processEmailOTP);
 /* GET to perform UserLogout */
 router.get('/logout', authController.performLogout);
 
+/* GET: render reset password page */
+router.get('/forgetPassword', authController.forgetPassword)
+
+/* POST: recover password */
+router.post('/recoverPassword', authController.recoverPassword)
+/* GET: render recover password page */
+router.get('/recoverPassword/:id', authController.renderRecoverPasswordPage)
+
+
+
+
 module.exports = router;
