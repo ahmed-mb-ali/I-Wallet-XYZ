@@ -2,7 +2,7 @@ module.exports =
 {
    
     // new database 
-    "URI": "mongodb+srv://AhmedAli:aGSI9lpQsJC2C4vK@mongodbserver.emhjc.mongodb.net/users?retryWrites=true&w=majority"
+    "URI": "mongodb+srv://AhmedAli:aGSI9lpQsJC2C4vK@mongodbserver.emhjc.mongodb.net/i_wallet_db?retryWrites=true&w=majority"
 
 
 
