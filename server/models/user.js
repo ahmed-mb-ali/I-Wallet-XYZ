@@ -55,7 +55,7 @@ let User = mongoose.Schema
             OTPType:
             {
                 type: String,
-                default: ""
+                default: "email"
 
             },
             OTPResult: {

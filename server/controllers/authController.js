@@ -37,8 +37,10 @@ const SendEmailOTP = async (emailAddress, OTP) => {
     let message = {
         from: "Njobedari@gmail.com",
         to: emailAddress,
-        subject: "OTP",
-        html: `<h1>Hello . OTP Code is ${OTP}</h1>`
+        subject: "Your Verification Code",
+        html: `<h1>Hello . Make sure this is you signing up</h1>
+        <br>
+        <p>If yes, The verification is: ${OTP}</p>`
     }
 
     let result = await transporter.sendMail(message);
