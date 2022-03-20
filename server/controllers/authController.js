@@ -29,13 +29,13 @@ const SendEmailOTP = async (emailAddress, OTP) => {
         secure: false,
         requireTLS: true,
         auth: {
-            user: 'Njobedari@gmail.com',
-            pass: 'Newemail2022'
+            user: 'iwalletxyz@gmail.com',
+            pass: 'Iwallet2022'
         }
     });
 
     let message = {
-        from: "Njobedari@gmail.com",
+        from: "iwalletxyz@gmail.com",
         to: emailAddress,
         subject: "Your Verification Code",
         html: `<h1>Hello . Make sure this is you signing up</h1>
