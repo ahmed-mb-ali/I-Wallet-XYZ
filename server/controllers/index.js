@@ -109,6 +109,7 @@ module.exports.processRegisterPage = (req, res, next) => {
         username: req.body.username,
         //password: req.body.password
         email: req.body.email,
+        phone: req.body.phone,
         displayName: req.body.displayName
     });
     console.log(newUser)
