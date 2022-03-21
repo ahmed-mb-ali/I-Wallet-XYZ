@@ -29,8 +29,8 @@ const SendEmailOTP = async (emailAddress, OTP) => {
         secure: false,
         requireTLS: true,
         auth: {
-            user: 'iwalletxyz@gmail.com',
-            pass: 'Iwallet2022'
+            user: 'Njobedari@gmail.com',
+            pass: 'Newemail2022'
         }
     });
 
