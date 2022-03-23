@@ -39,6 +39,14 @@ let User = mongoose.Schema
                 required: 'Display Name is required'
             },
 
+            phone:
+            {
+                type: String,
+                default: "",
+                trim: true,
+            },
+
+
             created:
             {
                 type: Date,
@@ -55,7 +63,7 @@ let User = mongoose.Schema
             OTPType:
             {
                 type: String,
-                default: ""
+                default: "email"
 
             },
             OTPResult: {
@@ -78,6 +86,7 @@ let User = mongoose.Schema
                 default: false
 
             },
+           
             SMSOTPExpires:
             {
                 type: Date
