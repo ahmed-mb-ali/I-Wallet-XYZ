@@ -1,0 +1,33 @@
+
+<!-- Main Navigation -->
+<nav class="navbar navbar-expand-lg ">
+
+  <ul class="nav nav-pills">
+        <% if(typeof displayName == 'string' && displayName) { %>
+
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="/home">Home</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="/document" > Document </a></li>
+        <li><a class="dropdown-item" href="/notification"> Notification </a></li>
+        <li><a class="dropdown-item" href="/userProfile"> User Profile </a></li>
+        <li><a class="dropdown-item" href="/customerCare"> Customer Care </a></li>  
+        <% if(isAdmin)  {%>
+          <li><a class="dropdown-item" href="/tickets"> Tickets </a></li>  
+          <%}%>
+          </ul>
+
+  </li>
+  <% } %>
+      <% if(typeof displayName == 'string' && displayName) { %>
+          <li class="navbar-text"><i class="fas fa-lg fa-user"></i> Welcome, <%= displayName %></li>
+          <li class="nav-item"><a href="/logout" class="nav-link">
+            <i class="fas fa-lg fa-sign-out-alt"></i> Logout</a></li>
+        <% } else { %>
+          <li class="nav-item"><a href="/login" class="nav-link">
+            <i class="fas fa-lg fa-sign-in-alt"></i> Login</a></li>
+        <% } %>  
+  </nav>
