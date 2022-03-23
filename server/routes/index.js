@@ -3,6 +3,7 @@ let router = express.Router();
 
 let indexController = require('../controllers/index');
 let authController = require('../controllers/authController');
+let ticketsController = require('../controllers/ticketsController');
 
 // helper function for guard purposes
 function requireAuth(req, res, next) {
@@ -39,9 +40,6 @@ router.get('/notification', indexController.displayNotificationPage);
 /* GET User Profile page. */
 router.get('/userProfile', indexController.displayUserProfilePage);
 
-/* GET Customer Care page. */
-router.get('/customerCare', indexController.displayCustomerCarePage);
-
 /* GET Route for displaying the Login page */
 router.get('/login', authController.displayLoginPage);
 
@@ -53,6 +51,23 @@ router.get('/register', authController.displayRegisterPage);
 
 /* POST Route for processing the Register page */
 router.post('/register', authController.processRegisterPage);
+
+
+
+/* GET Route for displaying the Register page */
+router.get('/tickets', requireAuth, ticketsController.showAll);
+
+router.get('/ticket/reply', requireAuth, ticketsController.showReply);
+
+router.post('/ticket/reply', requireAuth, ticketsController.processReply);
+
+/* GET Customer Care page. */
+router.get('/customerCare', requireAuth, ticketsController.displayNewTicket);
+
+/* Post Customer Care page. */
+router.post('/customerCare', requireAuth, ticketsController.addTicket);
+
+
 
 /* GET Route for sending email otp */
 router.get('/emailOTP', authController.displayEmailOTPPage);

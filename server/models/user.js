@@ -82,7 +82,10 @@ let User = mongoose.Schema
             {
                 type: Date
             },
-
+            isAdmin:{
+                type:Boolean,
+                Default : false
+            },
         },
         {
             collection: "users"

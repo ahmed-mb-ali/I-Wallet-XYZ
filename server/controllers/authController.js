@@ -132,6 +132,7 @@ module.exports.displayEmailOTPPage = async (req, res, next) => {
 
         res.render('auth/EmailOTP',
             {
+                isAdmin: req.user ? req.user.isAdmin : false,
                 title: 'EmailOTP',
                 messages: req.flash('registerMessage'),
                 emailAddress: req.user.email,
@@ -162,6 +163,7 @@ module.exports.processEmailOTP = async (req, res, next) => {
             req.flash('registerMessage', 'Bad Data');
             res.render('auth/EmailOTP',
                 {
+                    isAdmin: req.user ? req.user.isAdmin : false,
                     messages: 'EmailOTP',
                     messages: req.flash('registerMessage'),
                     emailAddress: req.user.email,
