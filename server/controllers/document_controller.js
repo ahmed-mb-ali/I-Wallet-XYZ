@@ -37,8 +37,8 @@ exports.addDocument = function(req,res){
             data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.healthCard)),
             contentType: 'image/png'
         };
-        document.healthCard = {
-            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.healthCard)),
+        document.ontarioId = {
+            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.ontarioId)),
             contentType: 'image/png'
         };
         document.passport = {
@@ -121,8 +121,8 @@ exports.updateDocument=function(req,res,id){
         data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.healthCard)),
         contentType: 'image/png'
     };
-    document.healthCard = {
-        data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.healthCard)),
+    document.ontarioId = {
+        data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.ontarioId)),
         contentType: 'image/png'
     };
     document.passport = {

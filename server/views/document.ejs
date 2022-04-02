@@ -1,77 +1,153 @@
 <%- include partials/header.ejs %>
 
-<%- include partials/main_nav.ejs %>
+    <%- include partials/main_nav.ejs %>
 
 
 
 
-    <!-- Main Content -->
-    <main>
-      <main class="container">
-        <div class="row">
-           <div class="col">
-              <div class="jumbotron">
-                 <h1 class="display-7"><%= title %></h1>
-              </div>
-           </div>
-        </div>
-           <div class="row">
-             <div class="col">
-               <p class="display-10">Welcome to <%= title %> </p>
-               <hr class="my-4">
-             </div>
-          </div>  
-    
-
-    <!-- Government ID's Bar-->
-    <strong><p><li class="list-group-item">Government ID's</li></p></strong>
-
-
-    <ul  class="image-group">
-        <div class="col">
-
-            <strong><p><li class="list-group-item">Driving Licence</li></p></strong>
-
-            <div class="col1" class="net-image">
-                <img src="Assets/images/driving-licence-small.png" id="Driving_Licence_Image" alt="Driving Licence Image">
-                <a href="Assets/images/driving-licence.jpg"><br>Large Image</a><br><br>
-            </div><br>
+        <!-- Main Content -->
+        <main>
+            <main class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="jumbotron">
+                            <h1 class="display-7">
+                                <%= title %>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="display-10">Welcome to <%= title %>
+                        </p>
+                        <hr class="my-4">
+                    </div>
+                </div>
 
 
-            <strong><p><li class="list-group-item">Health Card</li></p></strong>
-
-            <div class="col1">
-                <img src="Assets/images/ontario-healthcard-small.png" id="Ontario_Healthcard"  alt="Ontario HealthCard Image">
-                <a href="Assets/images/ontario-healthcard.jpg"><br>Large Image</a><br><br>   
-            </div><br>
-
-
-            <strong><p><li class="list-group-item">Ontario ID</li></p></strong>
-
-            <div class="col1">
-                <img src="Assets/images/ontario-id-small.png" id="Ontario_Id_image"  alt="Ontario ID Image">
-                <a href="Assets/images/ontario-id.jpg"><br>Large Image</a><br><br>      
-            </div><br>
-
-            <strong><p><li class="list-group-item">Passport</li></p></strong>
-
-            <div class="col1">
-                <img src="Assets/images/passport-canada-small.jpg" id="Passport_Canada_image"  alt="Passport Canada Image">
-                <a href="Assets/images/passport-canada.jpg"><br>Large Image</a><br><br>      
-            </div>
-    </div>
-    </ul><br> 
+                <!-- Government ID's Bar-->
+                <strong>
+                    <p>
+                        <li class="list-group-item">Government ID's</li>
+                    </p>
+                </strong>
 
 
-    </main>
+                <ul class="image-group">
+                    <div class="col">
+                        <% if (item) {%>
+                            <!-- if item exits display the current document and allow update-->
+                            <form action="/documents" method="POST">
+
+                                <!--driving licence-->
+                                <strong>
+                                    <p>
+                                        <li class="list-group-item">Driving Licence</li>
+                                    </p>
+                                </strong>
+                                <div class="col1">
+                                    <img src="data:image/<%=item.drivingLicence.contentType%>;base64,
+                                <%=item.drivingLicence.data.toString('base64')%>">
+                                    <input type="file" id="drivingLicence" name="drivingLicence" />
+                                </div><br>
+
+                                <!--health card-->
+                                <strong>
+                                    <p>
+                                        <li class="list-group-item">Health Card</li>
+                                    </p>
+                                </strong>
+                                <div class="col1">
+                                    <img src="data:image/<%=item.healthCard.contentType%>;base64,
+                                <%=item.healthCard.data.toString('base64')%>">
+                                    <input type="file" id="healthCard" name="healthCard" />
+                                </div><br>
+
+                                <!--ontario id-->
+                                <strong>
+                                    <p>
+                                        <li class="list-group-item">Ontario ID</li>
+                                    </p>
+                                </strong>
+                                <div class="col1">
+                                    <img src="data:image/<%=item.ontarioId.contentType%>;base64,
+                                <%=item.ontarioId.data.toString('base64')%>">
+                                    <input type="file" id="ontarioId" name="ontarioId" />
+                                </div><br>
+
+                                <!--passport-->
+                                <strong>
+                                    <p>
+                                        <li class="list-group-item">Passport</li>
+                                    </p>
+                                </strong>
+                                <div class="col1">
+                                    <img src="data:image/<%=item.passport.contentType%>;base64,
+                                <%=item.passport.data.toString('base64')%>">
+                                    <input type="file" id="passport" name="passport" />
+                                </div>
+
+                                <!--update document button-->
+                                <button type="submit" class="btn btn-outline-primary" name="submit"
+                                    id="submit">Update</button>
+                            </form>
+
+                            <!--else allow user to create document-->
+                            <% } else { %>
+                                <form action="/documents" method="post">
+
+                                    <!--driving licence-->
+                                    <strong>
+                                        <p>
+                                            <li class="list-group-item">Driving Licence</li>
+                                        </p>
+                                    </strong>
+                                    <div class="col1" class="net-image">
+                                        <input type="file" id="drivingLicence" name="drivingLicence" />
+                                    </div><br>
+
+                                    <!--health card-->
+                                    <strong>
+                                        <p>
+                                            <li class="list-group-item">Health Card</li>
+                                        </p>
+                                    </strong>
+                                    <div class="col1">
+                                        <input type="file" id="healthCard" name="healthCard" />
+                                    </div><br>
+
+                                    <!--ontario id-->
+                                    <strong>
+                                        <p>
+                                            <li class="list-group-item">Ontario ID</li>
+                                        </p>
+                                    </strong>
+                                    <div class="col1">
+                                        <input type="file" id="ontarioId" name="ontarioId" />
+                                    </div><br>
+
+                                    <!--passport-->
+                                    <strong>
+                                        <p>
+                                            <li class="list-group-item">Passport</li>
+                                        </p>
+                                    </strong>
+                                    <div class="col1">
+                                        <input type="file" id="passport" name="passport" />
+                                    </div>
+
+                                    <button type="submit" class="btn btn-outline-primary" name="upload"
+                                        id="upload">Upload</button>
+                                </form>
+                                <% } %>
+
+                </ul><br>
 
 
-<%- include partials/bottom_nav.ejs %>
-
-<%- include partials/footer.ejs %>
+            </main>
 
 
+            <%- include partials/bottom_nav.ejs %>
 
-
-
-
+                <%- include partials/footer.ejs %>
