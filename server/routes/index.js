@@ -3,6 +3,7 @@ let router = express.Router();
 
 let indexController = require('../controllers/index');
 let authController = require('../controllers/authController');
+let documentController = require('../controllers/document_controller');
 
 // helper function for guard purposes
 function requireAuth(req, res, next) {
@@ -23,6 +24,21 @@ function requireAuth(req, res, next) {
 }
 
 
+var multer = require('multer');
+  
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        console.log(file);
+        cb(null, file.originalname)
+    }
+});
+  
+var upload = multer({ storage: storage });
+
+
 
 /* GET home page. */
 router.get('/', requireAuth, indexController.displayHomePage);
@@ -31,7 +47,34 @@ router.get('/', requireAuth, indexController.displayHomePage);
 router.get('/home', requireAuth, indexController.displayHomePage);
 
 /* GET Documents page. */
-router.get('/document', requireAuth, indexController.displayDocumentPage);
+router.get('/document', requireAuth, documentController.listDocuments);
+
+// Post document page
+// driving licence
+router.post('/add-document-drivingLicence',
+upload.single('drivingLicence'),
+documentController.addDocumentDrivingLicence);
+
+// health card
+router.post('/add-document-healthCard',
+upload.single('healthCard'),
+documentController.addDocumentHealthCard);
+
+// ontario id
+router.post('/add-document-ontarioId',
+upload.single('ontarioId'),
+documentController.addDocumentOntarioId);
+
+// passport
+router.post('/add-document-passport',
+upload.single('passport'),
+documentController.addDocumentPassport);
+
+// Update document by id
+router.post('/update-document',documentController.updateDocument);
+
+//Delete document by id
+router.get('/delete-document',documentController.deleteDocument);
 
 /* GET Notification page. */
 router.get('/notification', indexController.displayNotificationPage);

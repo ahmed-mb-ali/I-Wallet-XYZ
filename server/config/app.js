@@ -15,7 +15,6 @@ let flash = require('connect-flash');
 // for saving document img
 var bodyParser = require('body-parser');
 var fs = require('fs');
-var path = require('path');
 
 // database setup
 let mongoose = require('mongoose');
@@ -35,6 +34,7 @@ mongoDB.once('open', ()=>{
 
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
+
 
 let  app = express();
 
