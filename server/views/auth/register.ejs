@@ -1,68 +1,83 @@
 <%- include ../partials/header.ejs %>
 
-    <%- include ../partials/main_nav.ejs %>
+<%- include ../partials/main_nav.ejs %>
 
-        <main class="container">
-            <!-- Message Area -->
-            <% if(messages.length> 0) {%>
-                <div class="alert alert-danger">
-                    <%= messages %>
-                </div>
-                <% } %><br>
+<main class="container">
+    <!-- Message Area -->
+    <% if(messages.length > 0) {%>
+        <div class="alert alert-danger">
+            <%= messages %>
+        </div>
+    <% } %><br>
 
-                    <div class="row">
-                        <div class="offset-md-3 col-md-6">
-                            <h1>Please Register</h1><br>
-                            <form method="POST" autocomplete="off">
-                                <fieldset class="form-group">
-                                    <label for="username">Username: </label>
-                                    <input type="text" class="form-control" name="username" placeholder="Enter username"
-                                        id="username" required autofocus>
-                                </fieldset>
+    <div class="row">
+        <div class="offset-md-4 col-md-4">
+            <h1>Please Register</h1><br>
+            <form method="POST" autocomplete="off">
+                <fieldset class="form-group">
+                    <label for="username">Username: </label>
+                    <input type="text" class="form-control"
+                    name="username" placeholder="Enter username"
+                    id="username" required autofocus>
+                </fieldset>
 
-                                <fieldset class="form-group">
-                                    <label for="password">Password: </label>
-                                    <input type="password" class="form-control" name="password"
-                                        placeholder="Enter password" id="password" required>
-                                </fieldset>
+                <fieldset class="form-group">
+                    <label for="password">Password: </label>
+                    <input type="password" class="form-control"
+                    name="password" placeholder="Enter password"
+                    id="password" required>
+                </fieldset>
 
-                                <fieldset class="form-group">
-                                    <label for="email">Email: </label>
-                                    <input type="email" class="form-control" name="email"
-                                        placeholder="Enter Email Address" id="email" required>
-                                </fieldset>
+                <fieldset class="form-group">
+                    <label for="email">Email: </label>
+                    <input type="email" class="form-control"
+                    name="email" placeholder="Enter Email Address"
+                    id="email" required>
+                </fieldset>
 
-
-                                <fieldset class="form-group">
-                                    <label for="phone">Phone: </label>
-                                    <input type="text" class="form-control" name="phone"
-                                        placeholder="Enter Phone Number" id="phone" required>
-                                </fieldset>
-
-                                <fieldset class="form-group">
-                                    <label for="displayName">Display Name: </label>
-                                    <input type="text" class="form-control" name="displayName"
-                                        placeholder="Enter Display Name" id="displayName" required>
-                                </fieldset><br>
-
-                                <fieldset class="form-group text-right">
-                                    <input type="submit" class="btn btn-success" value="Register">
-                                    <a href="/">
-                                        <input type="button" class="btn btn-warning" value="Cancel">
-                                    </a>
-                                </fieldset>
-
-                            </form>
+                <fieldset class="form-group">
+                    <label for="displayName">Display Name: </label>
+                    <input type="text" class="form-control"
+                    name="displayName" placeholder="Enter Display Name"
+                    id="displayName" required>
+                </fieldset><br>
+                <fieldset>
+                <label for="flexRadioDefault">Two-Factor Authentication: </label><br>
+                    <div class="form-check">
+                        
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            SMS
+                        </label>
                         </div>
+                        <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Email
+                        </label>
                     </div>
+                </fieldset><br>
+
+                <fieldset class="form-group text-right">
+                    <input type="submit" class="btn btn-success" value="Register">
+                    <a href="/">
+                        <input type="button" class="btn btn-warning" value="Cancel">
+                    </a>
+                </fieldset>
+
+                
+
+            </form>
+        </div>
+    </div>
 
 
-        </main>
+</main>
 
 
 
 
 
-        <%- include ../partials/bottom_nav.ejs %>
+<%- include ../partials/bottom_nav.ejs %>  
 
-            <%- include ../partials/footer.ejs %>
+<%- include ../partials/footer.ejs %>
