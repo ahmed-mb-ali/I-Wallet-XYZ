@@ -9,7 +9,6 @@ let Ticket = mongoose.Schema({
     
     senderid: String,
     title: String,
-    name: String,
     description: String,
     status: String,
     replyid: String,

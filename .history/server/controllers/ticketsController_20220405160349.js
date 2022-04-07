@@ -51,7 +51,6 @@ module.exports.processReply =async (req, res, next) => {
         let newTicket = ticket({
             senderid:req.user.id,
             title: data.title,
-            name: data.name,
             description: data.description,
             status: "Reply",
             createdate: new Date(),
@@ -88,9 +87,6 @@ module.exports.addTicket = async (req, res, next) => {
     if (!data.title) {
         errors.title = "Title is required"
     }
-    if (!data.name) {
-        errors.name = "Name is required"
-    }
     if (!data.description) {
         errors.description = "Description is required"
     }
@@ -116,7 +112,6 @@ module.exports.addTicket = async (req, res, next) => {
 
         senderid: data.senderid,
         title: data.title,
-        name: data.name,
         description: data.description,
         status: newstatus,
         createdate: date

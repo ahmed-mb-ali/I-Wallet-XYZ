@@ -116,7 +116,6 @@ module.exports.addTicket = async (req, res, next) => {
 
         senderid: data.senderid,
         title: data.title,
-        name: data.name,
         description: data.description,
         status: newstatus,
         createdate: date
