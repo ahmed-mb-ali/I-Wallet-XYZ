@@ -1,0 +1,25 @@
+<div className="management__page__main__container">
+    <div className="management__head__section">
+        <h2>Reply ticket</h2>
+        <h3>
+            <%=(item && item.length && item[0].title)%>
+        </h3>
+    </div>
+    <% if(items.length){ for(var i=0;i < items.length;i++) { %>
+        <div className='historyContainer'>
+            <label className='date'>
+                <%=items[i].createdate%>
+            </label>
+            <label className='desc'>
+                <%=items[i].description%>
+            </label>
+        </div>
+        <% } } %>
+            <form method="POST" autocomplete="off">
+                <div className='replyContainer'>
+                    <textarea name=replyText />
+                    <button type="submit" class="btn btn-success" value=" Send Reply"/>
+                       
+            </form>
+</div>
+</div>

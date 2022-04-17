@@ -1,0 +1,312 @@
+<%- include partials/header.ejs %>
+
+<%- include partials/main_nav.ejs %>
+
+
+
+
+        <!-- Main Content -->
+        <main>
+            <main class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="jumbotron">
+                            <h1 class="display-7">
+                                <%= title %>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="display-10">Welcome to <%= title %>
+                        </p>
+                        <hr class="my-4">
+                    </div>
+                </div>
+
+
+                <!-- Government ID's Bar-->
+                <strong>
+                    <p>
+                        <li class="list-group-item">Government ID's</li>
+                    </p>
+                </strong>
+
+
+                <ul class="image-group">
+                    <div class="col">
+                        <% if (containData) {%>
+
+                            <!-- if item exits display the current document and allow update-->
+                            <!--driving licence-->
+                            <form action="/add-document-drivingLicence" method="post" enctype="multipart/form-data">
+                                <% if (typeof item.drivingLicence.data == 'undefined') { %>
+                                    <strong>
+                                        <p>
+                                            <li class="list-group-item">Driving Licence</li>
+                                        </p>
+                                    </strong>
+                                    <div class="col1" class="net-image">
+                                        <img class="img-fluid" id="dlimg" />
+                                        <input type="file" id="drivingLicence" name="drivingLicence"
+                                            onchange="previewdl()" required />
+                                    </div><br>
+                                    <button type="submit" class="btn btn-outline-primary" name="upload"
+                                        id="upload">Upload</button>
+                                    <% } else {%>
+                                        <!--driving licence-->
+                                        <strong>
+                                            <p>
+                                                <li class="list-group-item">Driving Licence</li>
+                                            </p>
+                                        </strong>
+                                        <div class="col1">
+                                            <img id="dlimg" class="img-fluid" src="data:image/<%=item.drivingLicence.contentType%>;base64,
+                                        <%=item.drivingLicence.data.toString('base64')%>">
+                                            <input type="file" id="drivingLicence" name="drivingLicence" onchange="previewdl()" />
+                                        </div><br>
+                                        <button type="submit" class="btn btn-outline-primary" name="upload"
+                                            id="upload">Upload</button>
+            
+                                         <input type="date" id="Expiry" name="Expiry">
+                           </div><br>
+
+                                        <% } %>
+                            </form>
+
+
+                            <!--health card-->
+                            <form action="/add-document-healthCard" method="post" enctype="multipart/form-data">
+                                <% if(typeof item.healthCard.data == 'undefined') {%>
+                                    <strong>
+                                        <p>
+                                            <li class="list-group-item">Health Card</li>
+                                        </p>
+                                    </strong>
+                                    <div class="col1">
+                                        <img class="img-fluid" id="hcimg" />
+                                        <input type="file" id="healthCard" name="healthCard" onchange="previewhc()"
+                                            required />
+                                    </div><br>
+                                    <button type="submit" class="btn btn-outline-primary" name="upload"
+                                        id="upload">Upload</button>
+                                    <% } else { %>
+            <div class="col1">
+            
+                <input type="date" id="Expiry" name="Expiry">   
+            </div><br>
+
+                                        <strong>
+                                            <p>
+                                                <li class="list-group-item">Health Card</li>
+                                            </p>
+                                        </strong>
+                                        <div class="col1">
+                                            <img id="hcimg" class="img-fluid" src="data:image/<%=item.healthCard.contentType%>;base64,
+                                <%=item.healthCard.data.toString('base64')%>">
+                                            <input type="file" id="healthCard" name="healthCard" onchange="previewhc()" />
+                                        </div><br>
+                                        <button type="submit" class="btn btn-outline-primary" name="upload"
+                                            id="upload">Upload</button>
+                                        <% } %>
+                            </form>
+
+
+                            <!--ontario id-->
+                            <form action="/add-document-ontarioId" method="post" enctype="multipart/form-data">
+                                <% if(typeof item.ontarioId.data == 'undefined') {%>
+                                    <strong>
+                                        <p>
+                                            <li class="list-group-item">Ontario ID</li>
+                                        </p>
+                                    </strong>
+                                    <div class="col1">
+                                        <img class="img-fluid" id="oiimg" />
+                                        <input type="file" id="ontarioId" name="ontarioId" onchange="previewoi()"
+                                            required />
+                                    </div><br>
+                                    <button type="submit" class="btn btn-outline-primary" name="upload"
+                                        id="upload">Upload</button>
+                                    <% } else { %>
+                                        <strong>
+                                            <p>
+                                                <li class="list-group-item">Ontario ID</li>
+                                            </p>
+                                        </strong>
+                                        <div class="col1">
+                                            <img id="oiimg" class="img-fluid" src="data:image/<%=item.ontarioId.contentType%>;base64,
+                                <%=item.ontarioId.data.toString('base64')%>">
+                                            <input type="file" id="ontarioId" name="ontarioId" onchange="previewoi()" />
+                                        </div><br>
+                                        <button type="submit" class="btn btn-outline-primary" name="upload"
+                                            id="upload">Upload</button>
+                                        <% } %>
+                            </form>
+            <div class="col1">
+             
+                <input type="date" id="Expiry" name="Expiry">      
+            </div><br>
+
+                            <!--passport-->
+                            <form action="/add-document-passport" method="post" enctype="multipart/form-data">
+                                <% if(typeof item.passport.data == 'undefined') {%>
+                                    <strong>
+                                        <p>
+                                            <li class="list-group-item">Passport</li>
+                                        </p>
+                                    </strong>
+                                    <div class="col1">
+                                        <img class="img-fluid" id="psimg" />
+                                        <input type="file" id="passport" name="passport" onchange="previewps()"
+                                            required />
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-outline-primary" name="upload"
+                                        id="upload">Upload</button>
+                                    <% } else { %>
+
+                                        <strong>
+                                            <p>
+                                                <li class="list-group-item">Passport</li>
+                                            </p>
+                                        </strong>
+                                        <div class="col1">
+                                            <img id="psimg" class="img-fluid" src="data:image/<%=item.passport.contentType%>;base64,
+                                <%=item.passport.data.toString('base64')%>">
+                                            <input type="file" id="passport" name="passport" onchange="previewps()" />
+                                        </div><br />
+                                        <button type="submit" class="btn btn-outline-primary" name="upload"
+                                            id="upload">Upload</button>
+                                        <% } %>
+                            </form>
+                            <br>
+            <div class="col1">
+            
+                <input type="date" id="Expiry" name="Expiry">      
+            </div>
+    </div>
+    </ul><br> 
+
+                            <a href="/delete-document" class="btn btn-outline-danger" id="delete" name="delete">Delete
+                                Document Info</a>
+                            <br>
+                            <!--else allow user to create document-->
+                            <% } else { %>
+                                <!--driving licence-->
+                                <form action="/add-document-drivingLicence" method="post" enctype="multipart/form-data">
+                                    <strong>
+                                        <p>
+                                            <li class="list-group-item">Driving Licence</li>
+                                        </p>
+                                    </strong>
+                                    <div class="col1" class="net-image">
+                                        <img class="img-fluid" id="dlimg" />
+                                        <input type="file" id="drivingLicence" name="drivingLicence"
+                                            onchange="previewdl()" required />
+                                    </div><br>
+                                    <button type="submit" class="btn btn-outline-primary" name="upload"
+                                        id="upload">Upload</button>
+                                </form>
+
+                                <!--health card-->
+                                <form action="/add-document-healthCard" method="post" enctype="multipart/form-data">
+                                    <strong>
+                                        <p>
+                                            <li class="list-group-item">Health Card</li>
+                                        </p>
+                                    </strong>
+                                    <div class="col1">
+                                        <img class="img-fluid" id="hcimg" />
+                                        <input type="file" id="healthCard" name="healthCard" onchange="previewhc()"
+                                            required />
+                                    </div><br>
+                                    <button type="submit" class="btn btn-outline-primary" name="upload"
+                                        id="upload">Upload</button>
+                                </form>
+
+                                <!--ontario id-->
+                                <form action="/add-document-ontarioId" method="post" enctype="multipart/form-data">
+                                    <strong>
+                                        <p>
+                                            <li class="list-group-item">Ontario ID</li>
+                                        </p>
+                                    </strong>
+                                    <div class="col1">
+                                        <img class="img-fluid" id="oiimg" />
+                                        <input type="file" id="ontarioId" name="ontarioId" onchange="previewoi()"
+                                            required />
+                                    </div><br>
+                                    <button type="submit" class="btn btn-outline-primary" name="upload"
+                                        id="upload">Upload</button>
+                                </form>
+
+                                <!--passport-->
+                                <form action="/add-document-passport" method="post" enctype="multipart/form-data">
+                                    <strong>
+                                        <p>
+                                            <li class="list-group-item">Passport</li>
+                                        </p>
+                                    </strong>
+                                    <div class="col1">
+                                        <img class="img-fluid" id="psimg" />
+                                        <input type="file" id="passport" name="passport" onchange="previewps()"
+                                            required />
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-outline-primary" name="upload"
+                                        id="upload">Upload</button>
+                                </form>
+
+                                <% } %>
+
+                </ul><br>
+                <br>
+                <br>
+                <br>
+
+
+            </main>
+            <script>
+                //preview driving licence
+                function previewdl() {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(document.getElementById("drivingLicence").files[0]);
+
+                    reader.onload = function (oFREvent) {
+                        document.getElementById("dlimg").src = oFREvent.target.result;
+                    };
+                }
+                //preview health card
+                function previewhc() {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(document.getElementById("healthCard").files[0]);
+
+                    reader.onload = function (oFREvent) {
+                        document.getElementById("hcimg").src = oFREvent.target.result;
+                    };
+                }
+                //preview ontario id
+                function previewoi() {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(document.getElementById("ontarioId").files[0]);
+
+                    reader.onload = function (oFREvent) {
+                        document.getElementById("oiimg").src = oFREvent.target.result;
+                    };
+                }
+                //preview passport
+                function previewps() {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(document.getElementById("passport").files[0]);
+
+                    reader.onload = function (oFREvent) {
+                        document.getElementById("psimg").src = oFREvent.target.result;
+                    };
+                }
+            </script>
+
+
+            <%- include partials/bottom_nav.ejs %>
+
+                <%- include partials/footer.ejs %>
