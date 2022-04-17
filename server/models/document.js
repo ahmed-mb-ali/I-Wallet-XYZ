@@ -10,17 +10,29 @@ let DocumentSchema = new Schema(
             data:Buffer,
             contentType:String
         },
+        DLED:{
+            type:Date
+        },
         healthCard:{
             data:Buffer,
             contentType:String
+        },
+        HCED:{
+            type:Date
         },
         ontarioId:{
             data:Buffer,
             contentType:String
         },
+        OIED:{
+            type:Date
+        },
         passport:{
             data:Buffer,
             contentType:String
+        },
+        PED:{
+            type:Date
         }
     }
 );

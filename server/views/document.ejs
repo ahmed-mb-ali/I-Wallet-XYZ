@@ -1,7 +1,7 @@
 <%- include partials/header.ejs %>
 
     <%- include partials/main_nav.ejs %>
-<%- include partials/main_nav_admin.ejs %>
+<%-// include partials/main_nav_admin.ejs %>
 
 
 
@@ -53,6 +53,11 @@
                                         <input type="file" id="drivingLicence" name="drivingLicence"
                                             onchange="previewdl()" required />
                                     </div><br>
+                                    <div class="mx-auto" style="width: 200px;">
+                                        <label for="Expiry">Expiry Date:</label>
+                                        <input class="form-control" type="date" id="DLED" name="DLED"> 
+                                        </div>
+                                        <br>
                                     <button type="submit" class="btn btn-outline-primary" name="upload"
                                         id="upload">Upload</button>
                                     <% } else {%>
@@ -67,14 +72,14 @@
                                         <%=item.drivingLicence.data.toString('base64')%>">
                                             <input type="file" id="drivingLicence" name="drivingLicence" onchange="previewdl()" />
                                         </div><br>
+                                        <div class="mx-auto" style="width: 200px;">
+                                            <label for="Expiry">Expiry Date:</label>
+                                            <input class="form-control" type="date" id="DLED" name="DLED" value='<%= item.DLED.getFullYear() + ( item.DLED.getMonth() < 10 ? '-0' : '-' )  +  (item.DLED.getMonth() + 1) + '-' +  item.DLED.getDate()%>'> 
+                                            </div>
+                                            <br>
                                         <button type="submit" class="btn btn-outline-primary" name="upload"
                                             id="upload">Upload</button>
-            <div class="col1" class="net-image">
-                <img src="Assets/images/driving-licence-small.png" id="Driving_Licence_Image" alt="Driving Licence Image">
-                <a href="Assets/images/driving-licence.jpg"><br>Large Image</a><br><br>
-                <label for="Expiry">Expiry Date:</label>
-                <input type="date" id="Expiry" name="Expiry">
-            </div><br>
+
 
                                         <% } %>
                             </form>
@@ -93,15 +98,15 @@
                                         <input type="file" id="healthCard" name="healthCard" onchange="previewhc()"
                                             required />
                                     </div><br>
+                                    <div class="mx-auto" style="width: 200px;">
+                                        <label for="Expiry">Expiry Date:</label>
+                                        <input class="form-control" type="date" id="HCDC" name="HCED"> 
+                                        </div>
+                                        <br>
                                     <button type="submit" class="btn btn-outline-primary" name="upload"
                                         id="upload">Upload</button>
                                     <% } else { %>
-            <div class="col1">
-                <img src="Assets/images/ontario-healthcard-small.png" id="Ontario_Healthcard"  alt="Ontario HealthCard Image">
-                <a href="Assets/images/ontario-healthcard.jpg"><br>Large Image</a><br><br>
-                <label for="Expiry">Expiry Date:</label>
-                <input type="date" id="Expiry" name="Expiry">   
-            </div><br>
+
 
                                         <strong>
                                             <p>
@@ -113,6 +118,11 @@
                                 <%=item.healthCard.data.toString('base64')%>">
                                             <input type="file" id="healthCard" name="healthCard" onchange="previewhc()" />
                                         </div><br>
+                                        <div class="mx-auto" style="width: 200px;">
+                                            <label for="Expiry">Expiry Date:</label>
+                                            <input class="form-control" type="date" id="HCED" name="HCED"  value='<%= item.HCED.getFullYear() + ( item.HCED.getMonth() < 10 ? '-0' : '-' ) + (item.HCED.getMonth() + 1)+ '-' +  item.HCED.getDate()%>'> 
+                                            </div>
+                                            <br>
                                         <button type="submit" class="btn btn-outline-primary" name="upload"
                                             id="upload">Upload</button>
                                         <% } %>
@@ -132,6 +142,13 @@
                                         <input type="file" id="ontarioId" name="ontarioId" onchange="previewoi()"
                                             required />
                                     </div><br>
+
+                                    <div class="mx-auto" style="width: 200px;">
+                                    <label for="Expiry">Expiry Date:</label>
+                                    <input class="form-control" type="date" id="OIED" name="OIED"> 
+                                    </div>
+                                    <br>
+
                                     <button type="submit" class="btn btn-outline-primary" name="upload"
                                         id="upload">Upload</button>
                                     <% } else { %>
@@ -145,16 +162,18 @@
                                 <%=item.ontarioId.data.toString('base64')%>">
                                             <input type="file" id="ontarioId" name="ontarioId" onchange="previewoi()" />
                                         </div><br>
+                                    <div class="mx-auto" style="width: 200px;">
+                                    <label for="Expiry">Expiry Date:</label>
+                                    <input class="form-control" type="date" id="OIED" name="OIED"  value='<%= item.OIED.getFullYear() + ( item.OIED.getMonth() < 10 ? '-0' : '-' )+ (item.OIED.getMonth() + 1)+ '-' +  item.OIED.getDate()%>'> 
+                                    </div>
+                                    <br>
                                         <button type="submit" class="btn btn-outline-primary" name="upload"
                                             id="upload">Upload</button>
                                         <% } %>
                             </form>
-            <div class="col1">
-                <img src="Assets/images/ontario-id-small.png" id="Ontario_Id_image"  alt="Ontario ID Image">
-                <a href="Assets/images/ontario-id.jpg"><br>Large Image</a><br><br>
-                <label for="Expiry">Expiry Date:</label>
-                <input type="date" id="Expiry" name="Expiry">      
-            </div><br>
+
+   
+
 
                             <!--passport-->
                             <form action="/add-document-passport" method="post" enctype="multipart/form-data">
@@ -170,6 +189,11 @@
                                             required />
                                     </div>
                                     <br>
+                                    <div class="mx-auto" style="width: 200px;">
+                                        <label for="Expiry">Expiry Date:</label>
+                                        <input class="form-control" type="date" id="PED" name="PED"> 
+                                        </div>
+                                        <br>
                                     <button type="submit" class="btn btn-outline-primary" name="upload"
                                         id="upload">Upload</button>
                                     <% } else { %>
@@ -184,20 +208,16 @@
                                 <%=item.passport.data.toString('base64')%>">
                                             <input type="file" id="passport" name="passport" onchange="previewps()" />
                                         </div><br />
+                                        <div class="mx-auto" style="width: 200px;">
+                                            <label for="Expiry">Expiry Date:</label>
+                                            <input class="form-control" type="date" id="PED" name="PED"  value='<%= item.PED.getFullYear() + ( item.PED.getMonth() < 10 ? '-0' : '-' ) + (item.PED.getMonth() + 1)+ '-' +  item.PED.getDate()%>'> 
+                                            </div>
+                                            <br>
                                         <button type="submit" class="btn btn-outline-primary" name="upload"
                                             id="upload">Upload</button>
                                         <% } %>
                             </form>
                             <br>
-            <div class="col1">
-                <img src="Assets/images/passport-canada-small.jpg" id="Passport_Canada_image"  alt="Passport Canada Image">
-                <a href="Assets/images/passport-canada.jpg"><br>Large Image</a><br><br>
-                <label for="Expiry">Expiry Date:</label>
-                <input type="date" id="Expiry" name="Expiry">      
-            </div>
-    </div>
-    </ul><br> 
-
                             <a href="/delete-document" class="btn btn-outline-danger" id="delete" name="delete">Delete
                                 Document Info</a>
                             <br>
@@ -215,6 +235,11 @@
                                         <input type="file" id="drivingLicence" name="drivingLicence"
                                             onchange="previewdl()" required />
                                     </div><br>
+                                    <div class="mx-auto" style="width: 200px;">
+                                        <label for="Expiry">Expiry Date:</label>
+                                        <input class="form-control" type="date" id="DLED" name="DLED"> 
+                                        </div>
+                                        <br>
                                     <button type="submit" class="btn btn-outline-primary" name="upload"
                                         id="upload">Upload</button>
                                 </form>
@@ -231,6 +256,11 @@
                                         <input type="file" id="healthCard" name="healthCard" onchange="previewhc()"
                                             required />
                                     </div><br>
+                                    <div class="mx-auto" style="width: 200px;">
+                                        <label for="Expiry">Expiry Date:</label>
+                                        <input class="form-control" type="date" id="HCED" name="HCED"> 
+                                        </div>
+                                        <br>
                                     <button type="submit" class="btn btn-outline-primary" name="upload"
                                         id="upload">Upload</button>
                                 </form>
@@ -247,6 +277,11 @@
                                         <input type="file" id="ontarioId" name="ontarioId" onchange="previewoi()"
                                             required />
                                     </div><br>
+                                    <div class="mx-auto" style="width: 200px;">
+                                        <label for="Expiry">Expiry Date:</label>
+                                        <input class="form-control" type="date" id="OIED" name="OIED"> 
+                                        </div>
+                                        <br>
                                     <button type="submit" class="btn btn-outline-primary" name="upload"
                                         id="upload">Upload</button>
                                 </form>
@@ -264,6 +299,11 @@
                                             required />
                                     </div>
                                     <br>
+                                    <div class="mx-auto" style="width: 200px;">
+                                        <label for="Expiry">Expiry Date:</label>
+                                        <input class="form-control" type="date" id="PED" name="PED"> 
+                                        </div>
+                                        <br>
                                     <button type="submit" class="btn btn-outline-primary" name="upload"
                                         id="upload">Upload</button>
                                 </form>

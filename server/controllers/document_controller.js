@@ -39,6 +39,7 @@ exports.addDocumentDrivingLicence = async function (req, res) {
         data: fs.readFileSync(path.join('./uploads/' + req.file.originalname)),
         contentType: 'image/png'
     };
+    document.DLED = req.body.DLED;
 
     document.save((error) => {
         if (error) {
@@ -64,6 +65,7 @@ exports.addDocumentHealthCard = async function (req, res) {
         data: fs.readFileSync(path.join('./uploads/' + req.file.originalname)),
         contentType: 'image/png'
     };
+    document.HCED = req.body.HCED;
 
     document.save((error) => {
         if (error) {
@@ -89,6 +91,7 @@ exports.addDocumentOntarioId = async function (req, res) {
         data: fs.readFileSync(path.join('./uploads/' + req.file.originalname)),
         contentType: 'image/png'
     };
+    document.OIED = req.body.OIED;
 
     document.save((error) => {
         if (error) {
@@ -114,6 +117,7 @@ exports.addDocumentPassport = async function (req, res) {
         data: fs.readFileSync(path.join('./uploads/' + req.file.originalname)),
         contentType: 'image/png'
     };
+    document.PED = req.body.PED;
 
     document.save((error) => {
         if (error) {
