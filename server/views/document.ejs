@@ -74,7 +74,7 @@
                                         </div><br>
                                         <div class="mx-auto" style="width: 200px;">
                                             <label for="Expiry">Expiry Date:</label>
-                                            <input class="form-control" type="date" id="DLED" name="DLED" value='<%= item.DLED.getFullYear() + ( item.DLED.getMonth() < 10 ? '-0' : '-' )  +  (item.DLED.getMonth() + 1) + '-' +  item.DLED.getDate()%>'> 
+                                            <input class="form-control" type="date" id="DLED" name="DLED" value='<%= item.DLED.getFullYear() + ( item.DLED.getMonth() < 10 ? '-0' : '-' )  +  (item.DLED.getMonth() + 1) + '-' +  (item.DLED.getDate()+1)%>'> 
                                             </div>
                                             <br>
                                         <button type="submit" class="btn btn-outline-primary" name="upload"
@@ -120,7 +120,7 @@
                                         </div><br>
                                         <div class="mx-auto" style="width: 200px;">
                                             <label for="Expiry">Expiry Date:</label>
-                                            <input class="form-control" type="date" id="HCED" name="HCED"  value='<%= item.HCED.getFullYear() + ( item.HCED.getMonth() < 10 ? '-0' : '-' ) + (item.HCED.getMonth() + 1)+ '-' +  item.HCED.getDate()%>'> 
+                                            <input class="form-control" type="date" id="HCED" name="HCED"  value='<%= item.HCED.getFullYear() + ( item.HCED.getMonth() < 10 ? '-0' : '-' ) + (item.HCED.getMonth() + 1)+ '-' +  (item.HCED.getDate()+1)%>'> 
                                             </div>
                                             <br>
                                         <button type="submit" class="btn btn-outline-primary" name="upload"
@@ -164,7 +164,7 @@
                                         </div><br>
                                     <div class="mx-auto" style="width: 200px;">
                                     <label for="Expiry">Expiry Date:</label>
-                                    <input class="form-control" type="date" id="OIED" name="OIED"  value='<%= item.OIED.getFullYear() + ( item.OIED.getMonth() < 10 ? '-0' : '-' )+ (item.OIED.getMonth() + 1)+ '-' +  item.OIED.getDate()%>'> 
+                                    <input class="form-control" type="date" id="OIED" name="OIED"  value='<%= item.OIED.getFullYear() + ( item.OIED.getMonth() < 10 ? '-0' : '-' )+ (item.OIED.getMonth() + 1)+ '-' +  (item.OIED.getDate()+1)%>'> 
                                     </div>
                                     <br>
                                         <button type="submit" class="btn btn-outline-primary" name="upload"
@@ -210,7 +210,7 @@
                                         </div><br />
                                         <div class="mx-auto" style="width: 200px;">
                                             <label for="Expiry">Expiry Date:</label>
-                                            <input class="form-control" type="date" id="PED" name="PED"  value='<%= item.PED.getFullYear() + ( item.PED.getMonth() < 10 ? '-0' : '-' ) + (item.PED.getMonth() + 1)+ '-' +  item.PED.getDate()%>'> 
+                                            <input class="form-control" type="date" id="PED" name="PED"  value='<%= item.PED.getFullYear() + ( item.PED.getMonth() < 10 ? '-0' : '-' ) + (item.PED.getMonth() + 1)+ '-' +  (item.PED.getDate()+1)%>'> 
                                             </div>
                                             <br>
                                         <button type="submit" class="btn btn-outline-primary" name="upload"
