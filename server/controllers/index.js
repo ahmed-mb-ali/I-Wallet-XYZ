@@ -11,11 +11,11 @@ let userModel = require('../models/user');
 let User = userModel.User; // alias
 
 module.exports.displayHomePage = (req,res, next) => {
-    res.render('home',{title: 'Home', displayName: req.user ? req.user.displayName : '' });
+    res.render('home',{isAdmin : req.user ? req.user.isAdmin : false, title: 'Home', displayName: req.user ? req.user.displayName : '' });
 }
 
 module.exports.displayDocumentPage = (req,res, next) => {
-    res.render('document', { title: 'Document', displayName: req.user ? req.user.displayName : '' });
+    res.render('document', {isAdmin : req.user ? req.user.isAdmin : false, title: 'Document', displayName: req.user ? req.user.displayName : '' });
 }
 
 module.exports.displayNotificationPage = (req,res, next) => {
@@ -26,9 +26,6 @@ module.exports.displayUserProfilePage = (req,res, next) => {
     res.render('userProfile', { title: 'User Profile', displayName: req.user ? req.user.displayName : '' });
 }
 
-module.exports.displayCustomerCarePage = (req,res, next) => {
-    res.render('customerCare', { title: 'Customer Care', displayName: req.user ? req.user.displayName : ''});
-}
 
 
 module.exports.displayLoginPage = (req, res, next) => {
@@ -109,6 +106,7 @@ module.exports.processRegisterPage = (req, res, next) => {
         username: req.body.username,
         //password: req.body.password
         email: req.body.email,
+        phone: req.body.phone,
         displayName: req.body.displayName
     });
     console.log(newUser)

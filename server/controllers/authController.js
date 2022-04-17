@@ -35,10 +35,12 @@ const SendEmailOTP = async (emailAddress, OTP) => {
     });
 
     let message = {
-        from: "Njobedari@gmail.com",
+        from: "I-Wallet",
         to: emailAddress,
-        subject: "OTP",
-        html: `<h1>Hello . OTP Code is ${OTP}</h1>`
+        subject: "Your Verification Code",
+        html: `<h1>Hello . Make sure this is you signing up</h1>
+        <br>
+        <p>If yes, The verification is: ${OTP}</p>`
     }
 
     let result = await transporter.sendMail(message);
@@ -132,10 +134,12 @@ module.exports.displayEmailOTPPage = async (req, res, next) => {
 
         res.render('auth/EmailOTP',
             {
+                isAdmin: req.user ? req.user.isAdmin : false,
                 title: 'EmailOTP',
                 messages: req.flash('registerMessage'),
                 emailAddress: req.user.email,
-                displayName: req.user ? req.user.displayName : ''
+                displayName: req.user ? req.user.displayName : '',
+                phone: req.user.phone
             });
     }
     else {
@@ -162,10 +166,12 @@ module.exports.processEmailOTP = async (req, res, next) => {
             req.flash('registerMessage', 'Bad Data');
             res.render('auth/EmailOTP',
                 {
+                    isAdmin: req.user ? req.user.isAdmin : false,
                     messages: 'EmailOTP',
                     messages: req.flash('registerMessage'),
                     emailAddress: req.user.email,
-                    displayName: req.user ? req.user.displayName : ''
+                    displayName: req.user ? req.user.displayName : '',
+                    phone: req.user.phone
                 });
         }
     }
@@ -181,7 +187,7 @@ module.exports.displayRegisterPage = (req, res, next) => {
             {
                 title: 'Register',
                 messages: req.flash('registerMessage'),
-                displayName: req.user ? req.user.displayName : ''
+                displayName: req.user ? req.user.displayName : '',
             });
     }
     else {
@@ -195,7 +201,8 @@ module.exports.processRegisterPage = (req, res, next) => {
         username: req.body.username,
         //password: req.body.password
         email: req.body.email,
-        displayName: req.body.displayName
+        displayName: req.body.displayName,
+        phone: req.body.phone
     });
 
     User.register(newUser, req.body.password, (err) => {
@@ -212,7 +219,8 @@ module.exports.processRegisterPage = (req, res, next) => {
                 {
                     title: 'Register',
                     messages: req.flash('registerMessage'),
-                    displayName: req.user ? req.user.displayName : ''
+                    displayName: req.user ? req.user.displayName : '',
+                    
                 });
         }
         else {

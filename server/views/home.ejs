@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/@fortawesome/fontawesome-free/css/all.min.css">
   <link rel='stylesheet' href='/Content/app.css' />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 </head>
 <body>
@@ -27,6 +29,10 @@
         <li><a class="dropdown-item" href="/notification"> Notification </a></li>
         <li><a class="dropdown-item" href="/userProfile"> User Profile </a></li>
         <li><a class="dropdown-item" href="/customerCare"> Customer Care </a></li>  
+        <% if(isAdmin)  {%>
+          <li><a class="dropdown-item" href="/tickets"> Tickets </a></li>  
+          <%}%>
+          </ul>
       </ul>
     </li>
      
@@ -68,8 +74,45 @@
         <p><form method="get" action="/customerCare" >
             <button type="submit" class="btn btn-warning btn-lg btn-block" style="width: 30%">Customer Care</button>
         </form><p>
+          
+          <div style="width: 30%">
+            <canvas id="myChart" width="400" height="200"></canvas>            
+          </div>
+          <script>
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Vaccinated','Not Vaccinated'],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [12, 19],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            </script>
+         
 
     </div>
+
+    
+    
 
 </main>
 

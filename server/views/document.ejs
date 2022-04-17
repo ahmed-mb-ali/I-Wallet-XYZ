@@ -1,6 +1,7 @@
 <%- include partials/header.ejs %>
 
     <%- include partials/main_nav.ejs %>
+<%- include partials/main_nav_admin.ejs %>
 
 
 
@@ -68,6 +69,12 @@
                                         </div><br>
                                         <button type="submit" class="btn btn-outline-primary" name="upload"
                                             id="upload">Upload</button>
+            <div class="col1" class="net-image">
+                <img src="Assets/images/driving-licence-small.png" id="Driving_Licence_Image" alt="Driving Licence Image">
+                <a href="Assets/images/driving-licence.jpg"><br>Large Image</a><br><br>
+                <label for="Expiry">Expiry Date:</label>
+                <input type="date" id="Expiry" name="Expiry">
+            </div><br>
 
                                         <% } %>
                             </form>
@@ -89,6 +96,12 @@
                                     <button type="submit" class="btn btn-outline-primary" name="upload"
                                         id="upload">Upload</button>
                                     <% } else { %>
+            <div class="col1">
+                <img src="Assets/images/ontario-healthcard-small.png" id="Ontario_Healthcard"  alt="Ontario HealthCard Image">
+                <a href="Assets/images/ontario-healthcard.jpg"><br>Large Image</a><br><br>
+                <label for="Expiry">Expiry Date:</label>
+                <input type="date" id="Expiry" name="Expiry">   
+            </div><br>
 
                                         <strong>
                                             <p>
@@ -136,6 +149,12 @@
                                             id="upload">Upload</button>
                                         <% } %>
                             </form>
+            <div class="col1">
+                <img src="Assets/images/ontario-id-small.png" id="Ontario_Id_image"  alt="Ontario ID Image">
+                <a href="Assets/images/ontario-id.jpg"><br>Large Image</a><br><br>
+                <label for="Expiry">Expiry Date:</label>
+                <input type="date" id="Expiry" name="Expiry">      
+            </div><br>
 
                             <!--passport-->
                             <form action="/add-document-passport" method="post" enctype="multipart/form-data">
@@ -170,6 +189,14 @@
                                         <% } %>
                             </form>
                             <br>
+            <div class="col1">
+                <img src="Assets/images/passport-canada-small.jpg" id="Passport_Canada_image"  alt="Passport Canada Image">
+                <a href="Assets/images/passport-canada.jpg"><br>Large Image</a><br><br>
+                <label for="Expiry">Expiry Date:</label>
+                <input type="date" id="Expiry" name="Expiry">      
+            </div>
+    </div>
+    </ul><br> 
 
                             <a href="/delete-document" class="btn btn-outline-danger" id="delete" name="delete">Delete
                                 Document Info</a>
