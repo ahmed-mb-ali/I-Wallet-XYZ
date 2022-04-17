@@ -22,10 +22,18 @@
                <hr class="my-4">
              </div>
           </div>  
-
-          <strong><p><li class="list-group-item">No Notifications</li></p></strong>
-         <ul> </ul>
-        
+          <% if (containData) {%> 
+            <% if(!(typeof notifications == 'undefined')) {%>
+               <ul class="list-group">
+                  <% notifications.forEach((item) => { %>
+                     <li class="list-group-item fw-bold"><%=item%></li>
+                  <% }); %> 
+               </ul>
+            <% } %>  
+         <% } else {%> 
+            <strong><p><li class="list-group-item">No Notifications</li></p></strong>
+            
+        <% } %> 
         
     </main>
 

@@ -35,12 +35,15 @@ exports.addDocumentDrivingLicence = async function (req, res) {
         document = new Document();
         document.user = req.user._id;
     }
-    document.drivingLicence = {
-        data: fs.readFileSync(path.join('./uploads/' + req.file.originalname)),
-        contentType: 'image/png'
-    };
-    document.DLED = req.body.DLED;
-
+    if (!(typeof req.file == 'undefined')) {
+        document.drivingLicence = {
+            data: fs.readFileSync(path.join('./uploads/' + req.file.originalname)),
+            contentType: 'image/png'
+        };
+    }
+    if (!(typeof req.body.DLED == 'undefined')) {
+        document.DLED = req.body.DLED;
+    }
     document.save((error) => {
         if (error) {
             return res.status(400).json({
@@ -48,7 +51,7 @@ exports.addDocumentDrivingLicence = async function (req, res) {
                 message: 'Unable to add document',
                 error: error,
             })
-        } else{
+        } else {
             res.redirect('/document')
         }
     });
@@ -61,12 +64,15 @@ exports.addDocumentHealthCard = async function (req, res) {
         document = new Document();
         document.user = req.user._id;
     }
-    document.healthCard = {
-        data: fs.readFileSync(path.join('./uploads/' + req.file.originalname)),
-        contentType: 'image/png'
-    };
-    document.HCED = req.body.HCED;
-
+    if (!(typeof req.file == 'undefined')) {
+        document.healthCard = {
+            data: fs.readFileSync(path.join('./uploads/' + req.file.originalname)),
+            contentType: 'image/png'
+        };
+    }
+    if (!(typeof req.body.HCED == 'undefined')) {
+        document.HCED = req.body.HCED;
+    }
     document.save((error) => {
         if (error) {
             return res.status(400).json({
@@ -74,7 +80,7 @@ exports.addDocumentHealthCard = async function (req, res) {
                 message: 'Unable to add document',
                 error: error,
             })
-        }else{
+        } else {
             res.redirect('/document')
         }
     });
@@ -87,12 +93,15 @@ exports.addDocumentOntarioId = async function (req, res) {
         document = new Document();
         document.user = req.user._id;
     }
-    document.ontarioId = {
-        data: fs.readFileSync(path.join('./uploads/' + req.file.originalname)),
-        contentType: 'image/png'
-    };
-    document.OIED = req.body.OIED;
-
+    if (!(typeof req.file == 'undefined')) {
+        document.ontarioId = {
+            data: fs.readFileSync(path.join('./uploads/' + req.file.originalname)),
+            contentType: 'image/png'
+        };
+    }
+    if (!(typeof req.body.OIED == 'undefined')) {
+        document.OIED = req.body.OIED;
+    }
     document.save((error) => {
         if (error) {
             return res.status(400).json({
@@ -100,7 +109,7 @@ exports.addDocumentOntarioId = async function (req, res) {
                 message: 'Unable to add document',
                 error: error,
             })
-        } else{
+        } else {
             res.redirect('/document')
         }
     });
@@ -113,12 +122,15 @@ exports.addDocumentPassport = async function (req, res) {
         document = new Document();
         document.user = req.user._id;
     }
-    document.passport = {
-        data: fs.readFileSync(path.join('./uploads/' + req.file.originalname)),
-        contentType: 'image/png'
-    };
-    document.PED = req.body.PED;
-
+    if (!(typeof req.file == 'undefined')) {
+        document.passport = {
+            data: fs.readFileSync(path.join('./uploads/' + req.file.originalname)),
+            contentType: 'image/png'
+        };
+    }
+    if (!(typeof req.body.PED == 'undefined')) {
+        document.PED = req.body.PED;
+    }
     document.save((error) => {
         if (error) {
             return res.status(400).json({
@@ -126,7 +138,7 @@ exports.addDocumentPassport = async function (req, res) {
                 message: 'Unable to add document',
                 error: error,
             })
-        } else{
+        } else {
             res.redirect('/document')
         }
     });
@@ -281,7 +293,7 @@ exports.deleteDocument = function (req, res, id) {
                 error: error,
             })
         } else {
-            res.render('document',{ title: 'Document', displayName: req.user ? req.user.displayName : '', containData: false });
+            res.render('document', { title: 'Document', displayName: req.user ? req.user.displayName : '', containData: false });
             /*
             return res.status(200).json({
                 isSuccess:true,
