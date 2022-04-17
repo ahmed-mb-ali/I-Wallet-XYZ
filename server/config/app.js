@@ -12,6 +12,9 @@ let passportLocal = require('passport-local');
 let localStrategy = passportLocal.Strategy;
 let flash = require('connect-flash');
 
+// for saving document img
+var bodyParser = require('body-parser');
+var fs = require('fs');
 
 // database setup
 let mongoose = require('mongoose');
@@ -32,7 +35,11 @@ mongoDB.once('open', ()=>{
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
 
+
 let  app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
